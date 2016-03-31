@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    #{userController.prepareView()}
+
+    <h:head>
+        <title>Kwetter -- Home</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home.xhtml">Kwetter</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                        <!--<li><a href="#">Link</a></li>-->
+                    </ul>
+                    <h:form id="searchForm" class="navbar-form navbar-left">
+                        <div class="form-group">
+                        <h:inputText class="form-control" id="searchContent" binding="#{searchContent}" p:placeholder="Search for Kweets by content" size="40"/>
+                        &nbsp;
+                        <h:commandLink class="btn btn-default" value="Search" action="#{userController.setSearchFor()}">
+                            <f:ajax render="output"/>
+                        </h:commandLink>
+                        </div>
+                    </h:form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <div class="col-md-6 panel">
+                <div class="panel-default">
+                    <div class="panel-heading"><h4>What's happening?</h4></div>
+                    <div class="panel-body">
+                        <h:form id="postKweet">
+                            <h:inputText class="form-control" id="kweetContent" binding="#{kweetContent}" p:placeholder="What's on your mind?" size="50"/>
+                            <br/><br/>
+                            <h:commandButton type="submit" class="btn btn-info" value="Kweet" action="#{userController.postKweet(kweetContent.value)}" />
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 panel">
+                <div class="panel-default">
+                    <div class="panel-heading"><h4>Details</h4></div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Name: #{userController.selected.name}</li>
+                            <li class="list-group-item">Location: #{userController.selected.location}</li>
+                            <li class="list-group-item">Bio: #{userController.selected.bio}</li>
+                            <li class="list-group-item">Web: #{userController.selected.web}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="col-md-6 panel">
+                <div class="panel-default">
+                    <div class="panel-heading"><h4>Kweets</h4></div>
+                    <div class="panel-body">
+                        <h:outputText id="output" value="#{userController.content}" escape="false"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 panel">
+                <div class="panel-default">
+                    <div class="panel-heading"><h4>Info</h4></div>
+                    <div class="panel-body">
+                        <h:form>
+                            <h:commandLink action="#{userController.setContentType('Followers')}" value="My Followers: #{userController.followerCount}">
+                                <f:ajax render="output"/>
+                            </h:commandLink>
+                            <br/>
+                            <h:commandLink action="#{userController.setContentType('Following')}" value="Following: #{userController.followingCount}">
+                                <f:ajax render="output"/>
+                            </h:commandLink>
+                            <br/>
+                            <h:commandLink action="#{userController.setContentType('Kweet')}" value="My Kweets: #{userController.kweetCount}">
+                                <f:ajax render="output"/>
+                            </h:commandLink>
+                            <br/>
+                            <h:commandLink action="#{userController.setContentType('Mentions')}" value="Mentions: #{userController.mentionCount}">
+                                <f:ajax render="output"/>
+                            </h:commandLink>
+                            <br/>
+                            <h:commandLink action="#{userController.setContentType('Timeline')}" value="View Timeline">
+                                <f:ajax render="output"/>
+                            </h:commandLink>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </h:body>
+</html>
+
