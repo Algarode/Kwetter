@@ -1,5 +1,4 @@
 # Kwetter
 Microblog
 
-Backend
-JSF
+Backend, JSF
