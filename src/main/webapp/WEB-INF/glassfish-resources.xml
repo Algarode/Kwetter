@@ -6,11 +6,11 @@
         
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="URL" value="jdbc:mysql://teamgameforce.nl:3306/basdeku163_edwin?zeroDateTimeBehavior=convertToNull"/>
-        <property name="User" value="basdeku163_edwin"/>
-        <property name="Password" value="edwin"/>
+        <property name="User" value="***"/>
+        <property name="Password" value="***"/>
         <property name="serverName" value="teamgameforce.nl"/>
         <property name="portNumber" value="3306"/>
-        <property name="databaseName" value="basdeku163_edwin"/>
+        <property name="databaseName" value="***"/>
 
     </jdbc-connection-pool>
 </resources>
