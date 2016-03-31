@@ -20,8 +20,8 @@
       <property name="eclipselink.ddl-generation.output-mode" value="database"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://teamgameforce.nl:3306/basdeku163_edwin?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="basdeku163_edwin"/>
-      <property name="javax.persistence.jdbc.password" value="edwin"/>
+      <property name="javax.persistence.jdbc.user" value="***"/>
+      <property name="javax.persistence.jdbc.password" value="***"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
